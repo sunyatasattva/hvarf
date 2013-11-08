@@ -44,8 +44,8 @@
 				.eq(hvarf.moon-1)
 				.addClass('current');
 			}
-		}
-	}())
+		};
+	}());
 	
 	jQuery(document).ready(function($) {
 		Hvarf.currentHvarf = Hvarf.getHvarfFor( new Date() );
@@ -56,7 +56,7 @@
 		.on('change', function(){
 			Hvarf.getHvarfFromCalendar();
 			Hvarf.adjustHvarfFor(Hvarf.currentHvarf);
-		})
+		});
 	});
 	
 })(window, document, jQuery);
