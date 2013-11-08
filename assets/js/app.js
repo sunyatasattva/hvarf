@@ -27,18 +27,21 @@
 			adjustHvarfFor: function(hvarf){
 				$('#sun .position')
 				.removeClass('current')
-				.eq(hvarf.sun)
+				.eq(hvarf.sun-1)
 				.addClass('current');
 				
 				$('#moon .position')
 				.removeClass('current')
-				.eq(hvarf.moon)
+				.eq(hvarf.moon-1)
 				.addClass('current');
 			}
 		}
 	}())
 	
 	jQuery(document).ready(function($) {
+		Hvarf.currentHvarf = Hvarf.getHvarfFor( new Date() );
+		Hvarf.adjustHvarfFor( Hvarf.currentHvarf );
+		
 		$('#date').on('change', function(){
 			Hvarf.getHvarfFromCalendar();
 			Hvarf.adjustHvarfFor(Hvarf.currentHvarf);
