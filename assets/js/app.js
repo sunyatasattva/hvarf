@@ -8,6 +8,13 @@
 				sun:  64,
 				moon: 4
 			},
+			circularMax: function(n, max){
+				while( n > max){
+					if( n > max )
+						n = n - max
+				}
+				return n					
+			},
 			hoursDifference: function(from, to){
 				return Math.ceil( ( (to - from)/1000)/3600 );
 			},
@@ -15,8 +22,8 @@
 				var diff = Hvarf.hoursDifference(Hvarf.zeroPoint.date, date);
 				return {
 					date: date,
-					sun:  Hvarf.zeroPoint.sun  + Math.ceil(diff / 120),
-					moon: Hvarf.zeroPoint.moon + Math.ceil(diff / 16)
+					sun:  Hvarf.circularMax( Hvarf.zeroPoint.sun  + Math.ceil(diff / 120), 73 ),
+					moon: Hvarf.circularMax( Hvarf.zeroPoint.moon + Math.ceil(diff / 16), 41 )
 				};
 			},
 			getHvarfFromCalendar: function(){
