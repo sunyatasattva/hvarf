@@ -9,11 +9,13 @@
 				moon: 4
 			},
 			circularMax: function(n, max){
-				while( n > max){
-					if( n > max )
-						n = n - max
+				while( n > max ){
+					n = n - max;
 				}
-				return n					
+				while( n < 0 ){
+					n = n + max;
+				}
+				return n;				
 			},
 			hoursDifference: function(from, to){
 				return Math.ceil( ( (to - from)/1000)/3600 );
@@ -49,7 +51,9 @@
 		Hvarf.currentHvarf = Hvarf.getHvarfFor( new Date() );
 		Hvarf.adjustHvarfFor( Hvarf.currentHvarf );
 		
-		$('#date').on('change', function(){
+		$('#date')
+		.val( new Date().toISOString().slice(0,10) )
+		.on('change', function(){
 			Hvarf.getHvarfFromCalendar();
 			Hvarf.adjustHvarfFor(Hvarf.currentHvarf);
 		})
