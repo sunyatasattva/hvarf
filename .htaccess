@@ -1,0 +1,9 @@
+SetEnvIf Host hvarf.lisc.se passreq
+AuthType Basic
+AuthName "Password Required"
+AuthUserFile /homez.723/liscjqxx/.htpasswd
+Require valid-user
+Order allow,deny
+Allow from all
+Deny from env=passreq
+Satisfy any
